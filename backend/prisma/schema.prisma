@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+  
+  
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admins {
+  id            Int       @id @default(autoincrement())
+  email         String    @unique @db.VarChar(255)
+  password_hash String    @db.VarChar(255)
+  created_at    DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model claims {
+  id         Int       @id @default(autoincrement())
+  user_id    Int?
+  drop_id    Int?
+  claim_code String    @unique @db.VarChar(50)
+  claimed_at DateTime? @default(now()) @db.Timestamp(6)
+  drops      drops?    @relation(fields: [drop_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  users      users?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([user_id, drop_id])
+  @@index([drop_id], map: "idx_claims_drop")
+}
+
+model drops {
+  id           Int         @id @default(autoincrement())
+  title        String      @db.VarChar(255)
+  description  String?
+  drop_time    DateTime    @db.Timestamp(6)
+  claim_window Int?        @default(10)
+  created_at   DateTime?   @default(now()) @db.Timestamp(6)
+  claims       claims[]
+  waitlists    waitlists[]
+}
+
+model users {
+  id            Int         @id @default(autoincrement())
+  email         String      @unique @db.VarChar(255)
+  password_hash String      @db.VarChar(255)
+  created_at    DateTime?   @default(now()) @db.Timestamp(6)
+  claims        claims[]
+  waitlists     waitlists[]
+}
+
+model waitlists {
+  id        Int       @id @default(autoincrement())
+  user_id   Int?
+  drop_id   Int?
+  joined_at DateTime? @default(now()) @db.Timestamp(6)
+  drops     drops?    @relation(fields: [drop_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  users     users?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@unique([user_id, drop_id])
+  @@index([drop_id], map: "idx_waitlist_drop")
+}
