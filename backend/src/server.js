@@ -1,23 +1,23 @@
 const express = require('express');
-const { PrismaClient } = require('@prisma/client');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+
 const authRoutes = require('./routes/authRoutes');
 const dropRoutes = require('./routes/dropRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
-const prisma = new PrismaClient();
-
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
-// Routes
 app.use('/auth', authRoutes);
 app.use('/drops', dropRoutes);
+app.use('/admin', adminRoutes);
 
-// Test route
-app.get('/', (req, res) => res.send('DropSpot backend çalışıyor!'));
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Sunucu hatası', details: err.message });
+});
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.listen(PORT, () => console.log(`Server ${PORT} portunda çalışıyor`));
-
-module.exports = prisma;

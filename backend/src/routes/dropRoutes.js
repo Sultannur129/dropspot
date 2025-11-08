@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { getDrops, joinWaitlist, leaveWaitlist, claimDrop } = require('../controllers/dropController');
 
-router.get('/', getDrops);                // Aktif drop listesi
-router.post('/:id/join', joinWaitlist);   // Waitlist’e katıl
-router.post('/:id/leave', leaveWaitlist); // Waitlist’ten ayrıl
-router.post('/:id/claim', claimDrop);     // Claim penceresi açıldığında hak talebi
+router.get('/', getDrops);
+router.post('/:id/join', joinWaitlist);
+router.post('/:id/leave', leaveWaitlist);
+router.post('/:id/claim', claimDrop);
 
 module.exports = router;

@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id            Int      @id @default(autoincrement())
+  email         String   @unique
+  password_hash String
+  created_at    DateTime @default(now())
+}
+
+model users {
+  id            Int        @id @default(autoincrement())
+  email         String     @unique
+  password_hash String
+  created_at    DateTime   @default(now())
+  claims        claim[]
+  waitlists     waitlist[]
+}
+
+model drop {
+  id           Int        @id @default(autoincrement())
+  title        String
+  description  String?
+  drop_time    DateTime
+  claim_window Int?       @default(10)
+  created_at   DateTime   @default(now())
+  claims       claim[]
+  waitlists    waitlist[]
+}
+
+model claim {
+  id         Int      @id @default(autoincrement())
+  user_id    Int
+  drop_id    Int
+  claim_code String   @unique
+  claimed_at DateTime @default(now())
+  user       users    @relation(fields: [user_id], references: [id]) // <-- user -> users
+  drop       drop     @relation(fields: [drop_id], references: [id])
+
+  @@unique([user_id, drop_id])
+}
+
+model waitlist {
+  id        Int      @id @default(autoincrement())
+  user_id   Int
+  drop_id   Int
+  joined_at DateTime @default(now())
+  user      users    @relation(fields: [user_id], references: [id]) // <-- user -> users
+  drop      drop     @relation(fields: [drop_id], references: [id])
+
+  @@unique([user_id, drop_id])
+}
