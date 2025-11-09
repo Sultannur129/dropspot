@@ -126,8 +126,10 @@ git clone <repo-url>
 cd DropSpot/frontend
 npm install
 npm run dev
+cd DropSpot/backend
+node src/server.js
 
-
+önce backend çalıştırılmalı sonra frontend
 Local: http://localhost:3000
 
 Dev server Turbopack kullanıyor, gerekirse NEXT_DISABLE_TURBOPACK=1 ayarlanabilir
@@ -161,3 +163,21 @@ Admin ve kullanıcı rolleri için detaylı yetkilendirme
 Responsive UI iyileştirmeleri ve dark mode
 
 JWT refresh token ve logout mekanizması
+
+
+POSTMAN OVERVIEW 
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
+![alt text](image-8.png)
+
+FRONTEND GÖRÜNTÜLERİ
+![alt text](image-9.png)
+![alt text](image-10.png)
+![alt text](image-11.png)
+![alt text](image-12.png)

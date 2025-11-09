@@ -39,22 +39,28 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
-    try {
-      const res = await adminApi.login(email, password);
-      
-        localStorage.setItem("adminToken", res.token);
-        router.push("/admin/dashboard");
-      
-    } catch {
-      setError("Sunucu hatası");
-    } finally {
-      setLoading(false);
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError("");
+  setLoading(true);
+  try {
+    const res = await adminApi.login(email, password);
+    console.log("Login res:", res); // <- Bunu ekle
+    if (res.token) {
+      localStorage.setItem("adminToken", res);
+      router.push("/admin/dashboard");
+    } else {
+      setError(res.error || "Sunucu hatası");
     }
-  };
+  } catch (err) {
+    console.log("Catch error:", err);
+    setError("Sunucu hatası");
+  } finally {
+    setLoading(false);
+  }
+};
+
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

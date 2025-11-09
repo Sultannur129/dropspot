@@ -29,7 +29,7 @@ export function getUserIdFromToken() {
 export async function adminLogin(email, password) {
   try {
     const res = await axios.post(`${API_BASE}/admin/login`, { email, password });
-    return res.data;
+    return res.token;
   } catch (err) {
     return { error: err.response?.data?.error || "Sunucu hatası" };
   }
