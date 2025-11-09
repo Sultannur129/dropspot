@@ -5712,12 +5712,14 @@ export namespace Prisma {
     id: number | null
     user_id: number | null
     drop_id: number | null
+    priority_score: number | null
   }
 
   export type WaitlistSumAggregateOutputType = {
     id: number | null
     user_id: number | null
     drop_id: number | null
+    priority_score: number | null
   }
 
   export type WaitlistMinAggregateOutputType = {
@@ -5725,6 +5727,7 @@ export namespace Prisma {
     user_id: number | null
     drop_id: number | null
     joined_at: Date | null
+    priority_score: number | null
   }
 
   export type WaitlistMaxAggregateOutputType = {
@@ -5732,6 +5735,7 @@ export namespace Prisma {
     user_id: number | null
     drop_id: number | null
     joined_at: Date | null
+    priority_score: number | null
   }
 
   export type WaitlistCountAggregateOutputType = {
@@ -5739,6 +5743,7 @@ export namespace Prisma {
     user_id: number
     drop_id: number
     joined_at: number
+    priority_score: number
     _all: number
   }
 
@@ -5747,12 +5752,14 @@ export namespace Prisma {
     id?: true
     user_id?: true
     drop_id?: true
+    priority_score?: true
   }
 
   export type WaitlistSumAggregateInputType = {
     id?: true
     user_id?: true
     drop_id?: true
+    priority_score?: true
   }
 
   export type WaitlistMinAggregateInputType = {
@@ -5760,6 +5767,7 @@ export namespace Prisma {
     user_id?: true
     drop_id?: true
     joined_at?: true
+    priority_score?: true
   }
 
   export type WaitlistMaxAggregateInputType = {
@@ -5767,6 +5775,7 @@ export namespace Prisma {
     user_id?: true
     drop_id?: true
     joined_at?: true
+    priority_score?: true
   }
 
   export type WaitlistCountAggregateInputType = {
@@ -5774,6 +5783,7 @@ export namespace Prisma {
     user_id?: true
     drop_id?: true
     joined_at?: true
+    priority_score?: true
     _all?: true
   }
 
@@ -5868,6 +5878,7 @@ export namespace Prisma {
     user_id: number
     drop_id: number
     joined_at: Date
+    priority_score: number
     _count: WaitlistCountAggregateOutputType | null
     _avg: WaitlistAvgAggregateOutputType | null
     _sum: WaitlistSumAggregateOutputType | null
@@ -5894,6 +5905,7 @@ export namespace Prisma {
     user_id?: boolean
     drop_id?: boolean
     joined_at?: boolean
+    priority_score?: boolean
     user?: boolean | usersDefaultArgs<ExtArgs>
     drop?: boolean | dropDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["waitlist"]>
@@ -5903,6 +5915,7 @@ export namespace Prisma {
     user_id?: boolean
     drop_id?: boolean
     joined_at?: boolean
+    priority_score?: boolean
     user?: boolean | usersDefaultArgs<ExtArgs>
     drop?: boolean | dropDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["waitlist"]>
@@ -5912,6 +5925,7 @@ export namespace Prisma {
     user_id?: boolean
     drop_id?: boolean
     joined_at?: boolean
+    priority_score?: boolean
     user?: boolean | usersDefaultArgs<ExtArgs>
     drop?: boolean | dropDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["waitlist"]>
@@ -5921,9 +5935,10 @@ export namespace Prisma {
     user_id?: boolean
     drop_id?: boolean
     joined_at?: boolean
+    priority_score?: boolean
   }
 
-  export type waitlistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "drop_id" | "joined_at", ExtArgs["result"]["waitlist"]>
+  export type waitlistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "drop_id" | "joined_at" | "priority_score", ExtArgs["result"]["waitlist"]>
   export type waitlistInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | usersDefaultArgs<ExtArgs>
     drop?: boolean | dropDefaultArgs<ExtArgs>
@@ -5948,6 +5963,7 @@ export namespace Prisma {
       user_id: number
       drop_id: number
       joined_at: Date
+      priority_score: number
     }, ExtArgs["result"]["waitlist"]>
     composites: {}
   }
@@ -6377,6 +6393,7 @@ export namespace Prisma {
     readonly user_id: FieldRef<"waitlist", 'Int'>
     readonly drop_id: FieldRef<"waitlist", 'Int'>
     readonly joined_at: FieldRef<"waitlist", 'DateTime'>
+    readonly priority_score: FieldRef<"waitlist", 'Int'>
   }
     
 
@@ -6852,7 +6869,8 @@ export namespace Prisma {
     id: 'id',
     user_id: 'user_id',
     drop_id: 'drop_id',
-    joined_at: 'joined_at'
+    joined_at: 'joined_at',
+    priority_score: 'priority_score'
   };
 
   export type WaitlistScalarFieldEnum = (typeof WaitlistScalarFieldEnum)[keyof typeof WaitlistScalarFieldEnum]
@@ -7184,6 +7202,7 @@ export namespace Prisma {
     user_id?: IntFilter<"waitlist"> | number
     drop_id?: IntFilter<"waitlist"> | number
     joined_at?: DateTimeFilter<"waitlist"> | Date | string
+    priority_score?: IntFilter<"waitlist"> | number
     user?: XOR<UsersScalarRelationFilter, usersWhereInput>
     drop?: XOR<DropScalarRelationFilter, dropWhereInput>
   }
@@ -7193,6 +7212,7 @@ export namespace Prisma {
     user_id?: SortOrder
     drop_id?: SortOrder
     joined_at?: SortOrder
+    priority_score?: SortOrder
     user?: usersOrderByWithRelationInput
     drop?: dropOrderByWithRelationInput
   }
@@ -7206,6 +7226,7 @@ export namespace Prisma {
     user_id?: IntFilter<"waitlist"> | number
     drop_id?: IntFilter<"waitlist"> | number
     joined_at?: DateTimeFilter<"waitlist"> | Date | string
+    priority_score?: IntFilter<"waitlist"> | number
     user?: XOR<UsersScalarRelationFilter, usersWhereInput>
     drop?: XOR<DropScalarRelationFilter, dropWhereInput>
   }, "id" | "user_id_drop_id">
@@ -7215,6 +7236,7 @@ export namespace Prisma {
     user_id?: SortOrder
     drop_id?: SortOrder
     joined_at?: SortOrder
+    priority_score?: SortOrder
     _count?: waitlistCountOrderByAggregateInput
     _avg?: waitlistAvgOrderByAggregateInput
     _max?: waitlistMaxOrderByAggregateInput
@@ -7230,6 +7252,7 @@ export namespace Prisma {
     user_id?: IntWithAggregatesFilter<"waitlist"> | number
     drop_id?: IntWithAggregatesFilter<"waitlist"> | number
     joined_at?: DateTimeWithAggregatesFilter<"waitlist"> | Date | string
+    priority_score?: IntWithAggregatesFilter<"waitlist"> | number
   }
 
   export type adminCreateInput = {
@@ -7453,6 +7476,7 @@ export namespace Prisma {
 
   export type waitlistCreateInput = {
     joined_at?: Date | string
+    priority_score: number
     user: usersCreateNestedOneWithoutWaitlistsInput
     drop: dropCreateNestedOneWithoutWaitlistsInput
   }
@@ -7462,10 +7486,12 @@ export namespace Prisma {
     user_id: number
     drop_id: number
     joined_at?: Date | string
+    priority_score: number
   }
 
   export type waitlistUpdateInput = {
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
     user?: usersUpdateOneRequiredWithoutWaitlistsNestedInput
     drop?: dropUpdateOneRequiredWithoutWaitlistsNestedInput
   }
@@ -7475,6 +7501,7 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
     drop_id?: IntFieldUpdateOperationsInput | number
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
   }
 
   export type waitlistCreateManyInput = {
@@ -7482,10 +7509,12 @@ export namespace Prisma {
     user_id: number
     drop_id: number
     joined_at?: Date | string
+    priority_score: number
   }
 
   export type waitlistUpdateManyMutationInput = {
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
   }
 
   export type waitlistUncheckedUpdateManyInput = {
@@ -7493,6 +7522,7 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
     drop_id?: IntFieldUpdateOperationsInput | number
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -7821,12 +7851,14 @@ export namespace Prisma {
     user_id?: SortOrder
     drop_id?: SortOrder
     joined_at?: SortOrder
+    priority_score?: SortOrder
   }
 
   export type waitlistAvgOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
     drop_id?: SortOrder
+    priority_score?: SortOrder
   }
 
   export type waitlistMaxOrderByAggregateInput = {
@@ -7834,6 +7866,7 @@ export namespace Prisma {
     user_id?: SortOrder
     drop_id?: SortOrder
     joined_at?: SortOrder
+    priority_score?: SortOrder
   }
 
   export type waitlistMinOrderByAggregateInput = {
@@ -7841,12 +7874,14 @@ export namespace Prisma {
     user_id?: SortOrder
     drop_id?: SortOrder
     joined_at?: SortOrder
+    priority_score?: SortOrder
   }
 
   export type waitlistSumOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
     drop_id?: SortOrder
+    priority_score?: SortOrder
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -8289,6 +8324,7 @@ export namespace Prisma {
 
   export type waitlistCreateWithoutUserInput = {
     joined_at?: Date | string
+    priority_score: number
     drop: dropCreateNestedOneWithoutWaitlistsInput
   }
 
@@ -8296,6 +8332,7 @@ export namespace Prisma {
     id?: number
     drop_id: number
     joined_at?: Date | string
+    priority_score: number
   }
 
   export type waitlistCreateOrConnectWithoutUserInput = {
@@ -8359,6 +8396,7 @@ export namespace Prisma {
     user_id?: IntFilter<"waitlist"> | number
     drop_id?: IntFilter<"waitlist"> | number
     joined_at?: DateTimeFilter<"waitlist"> | Date | string
+    priority_score?: IntFilter<"waitlist"> | number
   }
 
   export type claimCreateWithoutDropInput = {
@@ -8386,6 +8424,7 @@ export namespace Prisma {
 
   export type waitlistCreateWithoutDropInput = {
     joined_at?: Date | string
+    priority_score: number
     user: usersCreateNestedOneWithoutWaitlistsInput
   }
 
@@ -8393,6 +8432,7 @@ export namespace Prisma {
     id?: number
     user_id: number
     joined_at?: Date | string
+    priority_score: number
   }
 
   export type waitlistCreateOrConnectWithoutDropInput = {
@@ -8648,6 +8688,7 @@ export namespace Prisma {
     id?: number
     drop_id: number
     joined_at?: Date | string
+    priority_score: number
   }
 
   export type claimUpdateWithoutUserInput = {
@@ -8672,6 +8713,7 @@ export namespace Prisma {
 
   export type waitlistUpdateWithoutUserInput = {
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
     drop?: dropUpdateOneRequiredWithoutWaitlistsNestedInput
   }
 
@@ -8679,12 +8721,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     drop_id?: IntFieldUpdateOperationsInput | number
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
   }
 
   export type waitlistUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     drop_id?: IntFieldUpdateOperationsInput | number
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
   }
 
   export type claimCreateManyDropInput = {
@@ -8698,6 +8742,7 @@ export namespace Prisma {
     id?: number
     user_id: number
     joined_at?: Date | string
+    priority_score: number
   }
 
   export type claimUpdateWithoutDropInput = {
@@ -8722,6 +8767,7 @@ export namespace Prisma {
 
   export type waitlistUpdateWithoutDropInput = {
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
     user?: usersUpdateOneRequiredWithoutWaitlistsNestedInput
   }
 
@@ -8729,12 +8775,14 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
   }
 
   export type waitlistUncheckedUpdateManyWithoutDropInput = {
     id?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     joined_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    priority_score?: IntFieldUpdateOperationsInput | number
   }
 
 

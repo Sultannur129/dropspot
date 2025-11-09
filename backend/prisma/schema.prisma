@@ -31,8 +31,8 @@ model drop {
   drop_time    DateTime
   claim_window Int?      @default(10)
   created_at   DateTime  @default(now())
-  claims       claim[]
-  waitlists    waitlist[]
+  claims       claim[]   
+  waitlists    waitlist[] 
 }
 
 model claim {
@@ -42,7 +42,7 @@ model claim {
   claim_code String   @unique
   claimed_at DateTime @default(now())
   user       users    @relation(fields: [user_id], references: [id])  // <-- user -> users
-  drop       drop     @relation(fields: [drop_id], references: [id])
+  drop       drop     @relation(fields: [drop_id], references: [id], onDelete: Cascade)
   @@unique([user_id, drop_id])
 }
 
@@ -51,7 +51,8 @@ model waitlist {
   user_id   Int
   drop_id   Int
   joined_at DateTime @default(now())
+  priority_score Int 
   user      users    @relation(fields: [user_id], references: [id])  // <-- user -> users
-  drop      drop     @relation(fields: [drop_id], references: [id])
+  drop      drop     @relation(fields: [drop_id], references: [id], onDelete: Cascade)
   @@unique([user_id, drop_id])
 }

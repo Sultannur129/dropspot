@@ -156,7 +156,8 @@ exports.Prisma.WaitlistScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
   drop_id: 'drop_id',
-  joined_at: 'joined_at'
+  joined_at: 'joined_at',
+  priority_score: 'priority_score'
 };
 
 exports.Prisma.SortOrder = {

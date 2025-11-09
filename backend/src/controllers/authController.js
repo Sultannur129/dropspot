@@ -29,5 +29,13 @@ exports.login = async (req, res) => {
   const match = await bcrypt.compare(password, user.password_hash); // <-- password_hash
   if (!match) return res.status(401).json({ error: 'Şifre yanlış' });
 
-  res.json({ id: user.id, email: user.email });
+    const jwt = require('jsonwebtoken');
+
+   const token = jwt.sign(
+      { id: user.id, email: user.email }, 
+         process.env.JWT_SECRET, 
+       { expiresIn: '12h' } // 1 saat geçerlilik
+    );
+
+  res.json({ id: user.id, email: user.email , token: token});
 };

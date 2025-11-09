@@ -42,18 +42,19 @@ model claim {
   claim_code String   @unique
   claimed_at DateTime @default(now())
   user       users    @relation(fields: [user_id], references: [id]) // <-- user -> users
-  drop       drop     @relation(fields: [drop_id], references: [id])
+  drop       drop     @relation(fields: [drop_id], references: [id], onDelete: Cascade)
 
   @@unique([user_id, drop_id])
 }
 
 model waitlist {
-  id        Int      @id @default(autoincrement())
-  user_id   Int
-  drop_id   Int
-  joined_at DateTime @default(now())
-  user      users    @relation(fields: [user_id], references: [id]) // <-- user -> users
-  drop      drop     @relation(fields: [drop_id], references: [id])
+  id             Int      @id @default(autoincrement())
+  user_id        Int
+  drop_id        Int
+  joined_at      DateTime @default(now())
+  priority_score Int
+  user           users    @relation(fields: [user_id], references: [id]) // <-- user -> users
+  drop           drop     @relation(fields: [drop_id], references: [id], onDelete: Cascade)
 
   @@unique([user_id, drop_id])
 }
