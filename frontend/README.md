@@ -1,3 +1,5 @@
+Proje, yalnızca 3 gün içinde geliştirilmiş olup; Next.js 16 App Router, Tailwind CSS, token tabanlı authentication, CRUD işlemleri ve responsive admin panel gibi temel özellikleri içermektedir. Zaman kısıtlılığına rağmen, backend ve frontend entegrasyonu ile çalışır durumda bir prototip çıkarılmıştır.
+
 
 DropSpot Case Study
 
