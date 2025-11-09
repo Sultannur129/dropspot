@@ -130,6 +130,35 @@ Responsive UI iyileştirmeleri ve dark mode
 JWT refresh token ve logout mekanizması
 
 
+Zorluklar ve Çözümler
+
+Turbopack ve Tailwind CSS hataları → PostCSS konfigürasyonu ile çözüldü
+
+adminApi import hataları → Axios client ile çözüldü
+
+Production build hataları → App Router ve default export React component düzenlendi
+
+Öğrenilenler
+
+Next.js 16 App Router ile component ve page yönetimi
+
+Tailwind CSS ile modern responsive UI
+
+JWT token tabanlı authentication ve localStorage kullanımı
+
+CRUD işlemleri ve API yönetimi
+
+Gelecek Geliştirme Planları
+
+Backend ile gerçek veri entegrasyonu (Node.js + Express + MongoDB/PostgreSQL)
+
+Admin ve kullanıcı rolleri için yetkilendirme
+
+Responsive UI iyileştirmeleri ve dark mode
+
+JWT refresh token ve logout
+
+
 POSTMAN OVERVIEW 
 ![alt text](image.png)
 ![alt text](image-1.png)
